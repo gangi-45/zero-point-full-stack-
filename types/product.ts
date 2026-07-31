@@ -13,4 +13,9 @@ export type Product = {
   description: string;
   isFeatured: boolean;
   inStock: boolean;
+  brand?: string;
+  model?: string;
+  warranty?: string;
+  verifiedStatus?: boolean;
+  stockQuantity?: number;
 };

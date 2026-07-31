@@ -1,6 +1,6 @@
 import type { Product } from "@/types/product";
 
-const MOCK_PRODUCTS: Product[] = [
+export const MOCK_PRODUCTS: Product[] = [
   {
     id: "p01",
     title: "iPhone 13 128GB — Midnight Black",
@@ -14,6 +14,11 @@ const MOCK_PRODUCTS: Product[] = [
       "ভালো কন্ডিশনে iPhone 13 (128GB)। ব্যাটারি হেলথ ৮৯%। Face ID, ক্যামেরা ও স্পিকার সব পারফেক্ট। ৭ দিনের ওয়ারেন্টিসহ হাতে হাতে ডেলিভারি।",
     isFeatured: true,
     inStock: true,
+    brand: "Apple",
+    model: "A2633",
+    warranty: "৭ দিন",
+    verifiedStatus: true,
+    stockQuantity: 2,
   },
   {
     id: "p02",
@@ -28,6 +33,11 @@ const MOCK_PRODUCTS: Product[] = [
       "ব্র্যান্ড নিউ, সিলড প্যাকেট Galaxy S23 Ultra। 200MP ক্যামেরা, S Pen, 5000mAh ব্যাটারি। অফিসিয়াল ওয়ারেন্টিসহ।",
     isFeatured: true,
     inStock: true,
+    brand: "Samsung",
+    model: "SM-S918B",
+    warranty: "১ বছর",
+    verifiedStatus: true,
+    stockQuantity: 3,
   },
   {
     id: "p03",
@@ -42,6 +52,11 @@ const MOCK_PRODUCTS: Product[] = [
       "Redmi Note 13 Pro — 200MP ক্যামেরা, 67W ফাস্ট চার্জিং। ইউজড কন্ডিশন, সব ফাংশন টেস্টেড। সিম ও মেমোরি কার্ড স্লট ঠিক আছে।",
     isFeatured: true,
     inStock: true,
+    brand: "Xiaomi",
+    model: "2311DRA50G",
+    warranty: "৭ দিন",
+    verifiedStatus: true,
+    stockQuantity: 4,
   },
   {
     id: "p04",
@@ -56,6 +71,11 @@ const MOCK_PRODUCTS: Product[] = [
       "MacBook Air M2 (2022)। ব্যাটারি সাইকেল ৯৮, হালকা স্ক্র্যাচ আছে। অ্যাডাপ্টারসহ ফুল বক্স। Mymensingh এ হাতে হাতে দেখে কেনার সুযোগ।",
     isFeatured: true,
     inStock: true,
+    brand: "Apple",
+    model: "MLXY3LL/A",
+    warranty: "৭ দিন",
+    verifiedStatus: true,
+    stockQuantity: 1,
   },
   {
     id: "p05",
@@ -70,6 +90,11 @@ const MOCK_PRODUCTS: Product[] = [
       "নতুন Dell Inspiron 15 — Core i5 11th Gen, 16GB RAM, 512GB NVMe SSD। অফিস ও স্টাডির জন্য সেরা। ১ বছরের ওয়ারেন্টি।",
     isFeatured: false,
     inStock: true,
+    brand: "Dell",
+    model: "Inspiron 3511",
+    warranty: "১ বছর",
+    verifiedStatus: true,
+    stockQuantity: 5,
   },
   {
     id: "p06",
@@ -84,6 +109,11 @@ const MOCK_PRODUCTS: Product[] = [
       "Sony WH-1000XM4 — ইন্ডাস্ট্রি লিডিং নয়েজ ক্যান্সেলিং, ৩০ ঘণ্টা ব্যাটারি ব্যাকআপ। নতুন, সিলড প্যাকেট।",
     isFeatured: true,
     inStock: true,
+    brand: "Sony",
+    model: "WH-1000XM4",
+    warranty: "৬ মাস",
+    verifiedStatus: true,
+    stockQuantity: 6,
   },
   {
     id: "p07",
@@ -98,6 +128,11 @@ const MOCK_PRODUCTS: Product[] = [
       "Anker 20000mAh পাওয়ার ব্যাংক — 22.5W PD ফাস্ট চার্জিং, দুই ফোন একসাথে চার্জ করা যায়। ৬ মাসের ওয়ারেন্টি।",
     isFeatured: false,
     inStock: true,
+    brand: "Anker",
+    model: "A1287",
+    warranty: "৬ মাস",
+    verifiedStatus: true,
+    stockQuantity: 10,
   },
   {
     id: "p08",
@@ -112,9 +147,14 @@ const MOCK_PRODUCTS: Product[] = [
       "AirPods Pro 2 (USB-C)। অরিজিনাল, ANC ও ট্রান্সপারেন্সি মোড পরীক্ষিত। কানপিস নতুন করে দেওয়া হয়েছে।",
     isFeatured: false,
     inStock: false,
+    brand: "Apple",
+    model: "A2931",
+    warranty: "৭ দিন",
+    verifiedStatus: true,
+    stockQuantity: 0,
   },
 ];
 
-export async function getProducts(): Promise<Product[]> {
+export async function getMockProducts(): Promise<Product[]> {
   return MOCK_PRODUCTS;
 }

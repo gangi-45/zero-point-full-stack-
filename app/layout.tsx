@@ -1,23 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Hind_Siliguri } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StickyCTA } from "@/components/sticky-cta/StickyCTA";
 import { CONTACT, SITE } from "@/lib/constants";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const hindSiliguri = Hind_Siliguri({
-  subsets: ["bengali", "latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-hind-siliguri",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${SITE.domain}`),
@@ -104,7 +90,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="bn" className={`${inter.variable} ${hindSiliguri.variable}`}>
+    <html lang="bn">
       <body className="font-sans">
         <script
           type="application/ld+json"

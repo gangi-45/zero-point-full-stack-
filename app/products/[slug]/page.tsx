@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ChevronLeft, Phone, ShieldCheck, CheckCircle2 } from "lucide-react";
-import { getProducts } from "@/lib/mock-data";
+import { getProductBySlug, getProducts } from "@/sanity/product-service";
 import { Badge } from "@/components/shared/Badge";
 import { Button } from "@/components/shared/Button";
 import { Container } from "@/components/shared/Container";
@@ -25,8 +25,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: ProductPageProps): Promise<Metadata> {
-  const products = await getProducts();
-  const product = products.find((item) => item.slug === params.slug);
+  const product = await getProductBySlug(params.slug);
 
   if (!product) {
     return { title: "Product Not Found" };
@@ -43,9 +42,36 @@ export async function generateMetadata({
   };
 }
 
+function ProductJsonLd({ product }: { product: NonNullable<Awaited<ReturnType<typeof getProductBySlug>>> }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.title,
+    description: product.description,
+    image: [product.image],
+    sku: product.id,
+    brand: product.brand ? { "@type": "Brand", name: product.brand } : undefined,
+    category: product.category,
+    offers: {
+      "@type": "Offer",
+      price: product.price,
+      priceCurrency: "BDT",
+      availability: product.inStock
+        ? "https://schema.org/InStock"
+        : "https://schema.org/OutOfStock",
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export default async function ProductDetailPage({ params }: ProductPageProps) {
-  const products = await getProducts();
-  const product = products.find((item) => item.slug === params.slug);
+  const product = await getProductBySlug(params.slug);
 
   if (!product) {
     notFound();
@@ -55,6 +81,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
   return (
     <div className="pt-24 pb-16">
+      <ProductJsonLd product={product} />
       <Container>
         <nav aria-label="Breadcrumb" className="mb-6">
           <ol className="flex items-center gap-2 text-sm font-medium text-ink-muted">

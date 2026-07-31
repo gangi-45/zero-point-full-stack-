@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getProducts } from "@/lib/mock-data";
+import { getProducts } from "@/sanity/product-service";
 import { ProductsExplorer } from "@/components/filters/ProductsExplorer";
 import { Container } from "@/components/shared/Container";
 

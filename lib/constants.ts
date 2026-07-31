@@ -9,9 +9,11 @@ export const SITE = {
 } as const;
 
 export const CONTACT = {
-  phone: "+8801781685200",
-  phoneDisplay: "01781-685200",
-  whatsapp: "8801781685200",
+  phone: process.env.SHOP_PHONE ?? "+8801781685200",
+  phoneDisplay: process.env.SHOP_PHONE
+    ? process.env.SHOP_PHONE.replace("+880", "0")
+    : "01781-685200",
+  whatsapp: process.env.WHATSAPP_NUMBER ?? "8801781685200",
   address: "Chorpara Road, Mymensingh Sadar, Mymensingh 2200, Bangladesh",
   addressShort: "Chorpara Road, Mymensingh",
   mapsUrl:
